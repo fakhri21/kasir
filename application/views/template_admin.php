@@ -41,11 +41,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
 </head>
 
 <body class="bg-light h-100-p">
-  <?php get_header(); ?>
  
  
  <!-- jQuery 2.2.3 -->
-  <script src="<?php echo base_url(); ?>assets/js/jquery-2.2.3.min.js"></script>
+  <script src="<?php echo base_url('assets/js/jquery-2.2.3.min.js'); ?>"></script>
   <!-- Jquery -->
   <script src="<?php echo base_url();?>assets/js/currencyFormatter.min.js" type="text/javascript"></script>
   <script src="<?php echo base_url();?>assets/js/cleave.min.js" type="text/javascript"></script>
@@ -53,25 +52,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <script src="<?php echo base_url();?>assets/js/bootstrap-datepicker.js"></script>
   <script src="<?php echo base_url();?>assets/js/selectize.js" type="text/javascript"></script>
 
-<?php if ( astra_page_layout() == 'left-sidebar' ) : ?>
-
-	<?php get_sidebar(); ?>
-
-<?php endif ?>
-<section class="content">
-	<div id="primary col" <?php astra_primary_class(); ?>>
-		        <div class="row">
-              <?php echo $contents; ?>
-            </div>
-
-	</div><!-- #primary -->
-</section>
-<?php if ( astra_page_layout() == 'right-sidebar' ) : ?>
-
-	<?php get_sidebar(); ?>
-
-<?php endif ?>
-
+            
 
 <script>
   var base_url="<?php echo base_url(); ?>"
@@ -100,6 +81,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
      Both of these plugins are recommended to enhance the
      user experience. Slimscroll is required when using the
      fixed layout. -->
-
+  <?php echo $contents; ?>
 </body>
 </html>

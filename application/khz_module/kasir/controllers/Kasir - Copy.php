@@ -152,19 +152,7 @@ public function tampilproduct()
     }
 
 /* Aksi */
-    function notifikasi_pesanan()
-    {
-        $jml_sebelumnya=$this->Model_Kasir->get_count_penjualan_hari_ini();
-        $jml_sekarang=$this->Model_Kasir->get_count_penjualan_hari_ini();
-
-        $data = array(   'jml_sebelumnya' =>$jml_sebelumnya ,
-                         'jml_sekarang' =>$jml_sekarang );
-        
-        echo json_encode($data);
-
-    }
-
-
+    
     function masukcart()
     { 
      $index=$this->input->post('index');
