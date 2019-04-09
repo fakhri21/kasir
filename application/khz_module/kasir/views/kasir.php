@@ -1,3 +1,4 @@
+<link href="<?php echo base_url();?>assets/bootstrap/css/kasir.css" rel="stylesheet">
 <div class="container">
   <div class="row mb-2">
     <div class="col">
@@ -180,7 +181,6 @@ $.fn.dataTableExt.oApi.fnPagingInfo = function(oSettings)
 
 //datatables
 table = $('#mytable').DataTable({
-  "pageLength": 1,
 "order": [], //Initial no order.
 // Load data for the table's content from an Ajax source
 "ajax": {
@@ -266,26 +266,7 @@ function tampildetailpemesanan(id,nama,cback) { //Meja berisi
 
 }
 
-var jumlah_pesanan_sekarang=0;
-var notif=setInterval(notif_pesanan, 5000);
 /* Aksi */
-function notif_pesanan() {
-
-  $.post("kasir/notifikasi_pesanan",function (data) {
-    var data_parse="";
-    data_parse=JSON.parse(data)
-
-    if (jumlah_pesanan_sekarang==0) {
-        jumlah_pesanan_sekarang=data_parse.jml_sebelumnya
-    }
-
-    if (jumlah_pesanan_sekarang<data_parse.jml_sekarang) {
-      alertify.alert("Pesanan Baru Telah masuk")
-      jumlah_pesanan_sekarang=data_parse.jml_sebelumnya
-    }
-  })
-}
-
 function pilihmeja(id,nama) {
   id_meja=id
   $("#nama_meja").text(nama)

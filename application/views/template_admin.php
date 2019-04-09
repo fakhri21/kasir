@@ -14,22 +14,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="<?php echo base_url(); ?>/assets/css/selectize.default.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>/assets/css/font-awesome.css">
+
   <!-- DataTables -->
-  <link rel="stylesheet" href="<?php echo base_url(); ?>/assets/css/dataTables.bootstrap.css">
+  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/plugins/datatables/dataTables.bootstrap.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>/assets/css/AdminLTE.min.css">
   <link rel="stylesheet" href="<?php echo base_url(); ?>/assets/css/bootstrap.min.css">
   <link rel="stylesheet" href="<?php echo base_url(); ?>/assets/css/custom.css">
-  <link href="<?php echo base_url();?>assets/css/kasir.css" rel="stylesheet">
-  <link href="<?php echo base_url(); ?>/assets/css/bootstrap-datepicker3.css" rel="stylesheet">
+  <link href="<?php echo base_url();?>assets/css/bootstrap-datepicker3.css" rel="stylesheet">
   <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
         page. However, you can choose any other skin. Make sure you
         apply the skin class to the body tag so the changes take effect.
   -->
-  <link rel="stylesheet" href="<?php echo base_url(); ?>/assets/css/skins/skin-blue.min.css">
+  <link rel="stylesheet" href="<?php echo base_url(); ?>/assets/css/skin-blue.min.css">
 
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/alertify.core.css">
-     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/alertify.default.css">
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -44,7 +42,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
  
  
  <!-- jQuery 2.2.3 -->
-  <script src="<?php echo base_url('assets/js/jquery-2.2.3.min.js'); ?>"></script>
+  <script src="<?php echo base_url(); ?>assets/js/jquery-2.2.3.min.js"></script>
+  <script src="<?php echo base_url(); ?>assets/js/jquery.spinner.js"></script>
   <!-- Jquery -->
   <script src="<?php echo base_url();?>assets/js/currencyFormatter.min.js" type="text/javascript"></script>
   <script src="<?php echo base_url();?>assets/js/cleave.min.js" type="text/javascript"></script>
@@ -52,15 +51,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <script src="<?php echo base_url();?>assets/js/bootstrap-datepicker.js"></script>
   <script src="<?php echo base_url();?>assets/js/selectize.js" type="text/javascript"></script>
 
-            
+            <div class="row">
+              <?php echo $contents; ?>
+            </div>
 
 <script>
   var base_url="<?php echo base_url(); ?>"
 </script>
           
 <!-- DataTables -->
-<script src="<?php echo base_url(); ?>assets/js/jquery.dataTables.min.js"></script>
-<script src="<?php echo base_url(); ?>assets/js/dataTables.bootstrap.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/plugins/datatables/dataTables.bootstrap.min.js"></script>
   
 <!-- Bootstrap 3.3.6 -->
 <script src="<?php echo base_url(); ?>assets/js/bootstrap.min.js"></script>
@@ -69,10 +70,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="<?php echo base_url(); ?>assets/js/custom.js"></script>
 <!-- SPARKLINE -->
 <script src="<?php echo base_url(); ?>assets/js/jquery.sparkline.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/jquery.spinner.js"></script>
 <!-- AdminLTE App -->
 <script src="<?php echo base_url(); ?>assets/js/app.min.js"></script>
-<script src="<?php echo base_url(); ?>assets/js/alertify.min.js"></script>
-          
 <script type="text/javascript">
 
 </script>
@@ -81,6 +81,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
      Both of these plugins are recommended to enhance the
      user experience. Slimscroll is required when using the
      fixed layout. -->
-  <?php echo $contents; ?>
+
 </body>
 </html>

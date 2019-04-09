@@ -136,16 +136,6 @@ class Model_Kasir extends CI_Model {
 	}
 
 /* Kontent */
-
-	function get_count_penjualan() {
-		return $this->db->get('laporan_penjualan')->num_rows();
-	}
-
-	function get_count_penjualan_hari_ini() {
-		$this->db->where('date(eod)=0');
-		return $this->db->get('laporan_penjualan')->num_rows();
-	}
-
 	function list_customer()
 	{
 		$this->db->select('*');

@@ -31,11 +31,14 @@
 <body>
 
 	<div class="struk-box">
-		<h2><?php echo  get_option( 'nama_perusahaan' ) ?></h2>
-		
-		<h4><?php echo  get_option( 'slogan_perusahaan' ) ?></h4>
-		<p><?php echo  get_option( 'alamat_perusahaan' ) ?></p>
-		
+		<h2>Coffee Blues</h2>
+		<h2 style="margin-bottom: 5px;">'INDONESIA'</h2>
+
+		<h4>Coffee, Art &amp; Side Effect</h4>
+		<p>Jl. STM ujung</p>
+		<p>Komplek Chrysant Park No. 8</p>
+		<p>Medan Johor 20146</p>
+
 		<br>
 		<?php if ($print[0]['detail'][0]['id_metode']==1) { ?>
 			<p style="font-size: 20px; font-weight: bold;">Meja :<?php echo $print[0]['detail'][0]['nama_meja']; ?> </p>

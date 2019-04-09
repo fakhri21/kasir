@@ -19,6 +19,7 @@ public function __construct() {
     parent::__construct();
     $this->load->model('Model_Kasir');
     $this->data_product=$this->Model_Kasir->allproduct();
+    //$this->load->library('Konfigurasi');
     $user = wp_get_current_user();
     
         // if ( !in_array( 'kasir', (array) $user->roles ) ) {
@@ -84,53 +85,166 @@ public function __construct() {
     public function kontent_metode()
     {
         $data_metode=$this->Model_Kasir->tampilmetode();
-        $data['data_metode']=$data_metode;
 
-        $this->load->view('kontent_kasir/kontent_metode', $data);
-         
+        
+        echo '<div class="row">';
+            foreach ($data_metode as $metode) { 
+        echo    '<div class="col-md-2 col-sm-4 col-xs-12" style="margin-bottom: 10px;">
+                <button class="btn btn-success btn-lg btn-block" onclick="pilihmetode('.$metode['id_metode'].')"> '.$metode['nama_metode'].'</button>
+                </div>';
+               } 
+        echo  '</div>'; 
     }
     
     public function kontent_meja()
     {
         $data_meja=$this->Model_Kasir->tampilmeja();
-        $data['data_meja']=$data_meja;
 
         if ($data_meja) {
-            
-            $this->load->view('kontent_kasir/kontent_meja', $data);
-            
+        
+        echo '<div class="row">';
+            foreach ($data_meja as $meja) { 
+            $warna="is-green";
+            $aksi='pilihmeja("'.$meja['id_meja'].'","'.$meja['nama_meja'].'")';
+            if ($meja['status']== 1) {
+              $warna="is-red";
+              $aksi='tampildetailpemesanan("'.$meja['id_meja'].'","'.$meja['nama_meja'].'")';
+            }
+        echo    '<div class="col-md-2 col-sm-2 col-xs-2" style="margin-bottom: 10px;">
+                <button data-dismiss="modal" class="button-meja '.$warna.'" onclick='.$aksi.'> '.$meja['nama_meja'].'</button>
+                </div>';
+               } 
+        echo  '</div>';
         }  
     }
 
     public function tampildetailpemesanan($id_meja)
     {        
-        $args = array(
-        'name'                    => 'pelanggan', // string
-        'id'                      => 'pelanggan', // integer
-        'role'                    => 'user', // string|array,
-        'echo'                    => false
-        );
-
+    $args = array(
+    'name'                    => 'pelanggan', // string
+    'id'                      => 'pelanggan', // integer
+    'role'                    => 'user', // string|array,
+    'echo'                    => false
+    ); 
         $detailpemesanan= [];
-        $point=0;
         $detailpemesanan=$this->Model_Kasir->billmeja($id_meja);
-        if ($this->kelipatan_point>0) {
+        print_r($id_meja);
+    if(isset($detailpemesanan)){
+        echo '<div class="modal-dialog modal-lg">
+            <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>';
+            if ($detailpemesanan) {
+            $uniqid=$detailpemesanan[0]['uniqid'];
+        echo' <div class="modal-body">
+                <div class="row">
+                <div class="col-md-12">
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                <input type="hidden" id="uniqid" name="uniqid" value="'.$uniqid.'" />
+                <h4 class="modal-title">'.$detailpemesanan[0]['nama_meja'].'</h4>
+                <p>Waktu Order : '.$detailpemesanan[0]['waktu_order'].'</p>
+                <p>No bill : '.$detailpemesanan[0]['id_bill'].'</p>
+                <p>Pelanggan : '.wp_dropdown_users($args).'</p>
+                <p>Metode : <select  id=metode name="" value=""> </select></p>
+                <p>Tipe Bayar : <select  id=tipe name="" value=""> </select></p>
+                </div>
+
+                <table class="table">
+                <thead>
+                    <tr>
+                    <td style="width: 15px;">No.</td>
+                    <td>Nama Produk</td>
+                    <td>qty</td>
+                    <td>Harga</td>
+                    <td>Void</td>
+                    </tr>
+                </thead>
+                <tbody>';
+                
+                $subtotal=0;
+                $total=0;
+                $no=0;
+                $nilai_pajak=0;
+                $potongan=0;
+                $point=0;
+                foreach ($detailpemesanan as $items) {
+                        $subtotal=$subtotal+($items['total_kotor']);
+                        $nilai_pajak=$nilai_pajak+$items['nilai_pajak'];
+                        $total=$subtotal+$nilai_pajak-$items['nilai_potongan'];
+                        echo' 
+                        <tr>
+                        <td>'.++$no.'</td>
+                        <td>'.$items['nama_product'].'</td>
+                        <td>'.$items['quantity'].'</td>
+                        <td>'.$items['harga_jual'].'</td>
+                        <td><button data-toggle="modal" data-target="#modal-void" onclick="tampilformvoid('.stripcslashes("\'".$items['uniqid_item']."\'").')">Void</button></td>
+                        </tr>';
+                }
+                if ($this->kelipatan_point>0) {
                     $point=$total/$this->kelipatan_point;
                 }
-        
-        $data = array(  'args'              =>$args ,
-                        'point'             =>$point, 
-                        'detailpemesanan'   =>$detailpemesanan,   
-                        'persen_pajak'      =>$this->persen_pajak   );
-        
-        //print_r($id_meja);
-        if(isset($detailpemesanan)){
+                echo'
+                </tbody>
+                </table>
+            </div>
 
-            $this->load->view('kontent_detail_pemesanan', $data);
+            <div>
             
+            </div>
+
+                <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-6 col-sm-offset-6">
+                <table class="table">
+                <tr>
+                    <th>Sub-Total</th>
+                    <td><input type="text" id="sub_total" disabled name="" value="'.$subtotal.'"></td>
+                </tr>
+                <tr>
+                    <th>Pajak</th>
+                    <td><input disabled type="text" id="nilai_pajak" name="" value="'.$nilai_pajak.'"> ('.$this->persen_pajak.' %)</td>
+                </tr>
+                <tr>
+                    <th>Tambahan Discount </th>
+                    <td><input type="text" id="tambahan_discount" name="" value=""> %</td>
+                    <td><button onclick="tambahan_potongan()">Potongan</button></td>
+                    <td><input type="hidden" id="potongan" name="" value=""> </td>
+                </tr>
+                <tr>
+                    <th>Total</th>
+                    <td><input disabled id="total" name="" value="'.$total.'"></td>
+                </tr>
+                
+                </table>
+            </div>
+            </div>
+            
+            Point <input disabled id="point" name="" value="'.$point.'">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" onclick="bayar()">Bayar</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>';
         }
-        else {
-            $this->load->view('kontent_detail_pemesanan_no', $data);
+        echo   '</div>
+                    </div>';
+        
+
+        }
+        else{
+            echo '<div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Detail Pemesanan</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <p>Tidak ada pemesanan.</p>
+              </div>
+            </div>
+          </div>';
         }
     }
     
@@ -138,33 +252,56 @@ public function __construct() {
 public function tampilproduct()
     {
         $data_product=$this->Model_Kasir->allproduct();
-        $data['data_product']=$data_product;
-        
-        $this->load->view('kontent_kasir/kontent_tampil_product', $data);
+        echo '<script src="'.base_url().'assets/Jquery/jquery.spinner.js"></script>
+        <table class="table table-bordered table-striped" id="table-product">
+        <thead>
+        <tr>
+            <th style="width: 20px;">No</th>
+            <th>Nama Produk</th>
+            <th>Qty</th>
+            <th style="width: 50px;">Harga</th>
+            <th style="width: 70px;">Aksi</th>
+        </tr>
+        </thead>
+        <tbody>';
+        $no=0;
+        $nomor=0;
+        foreach ($data_product as $product) {
+     echo'  <tr>
+            <th>'.++$nomor.'</th>
+            <td>'.$product['nama_product'].'</td>
+            <td style="width: 100px;">
+            <div data-trigger="spinner" class="row">
+                <a class="btn btn-link btn-xs" href="javascript:;" data-spin="down" style="cursor: pointer;"><i class="fa fa-minus"></i></a>
+                <input type="text" style="width: 45px; border: none; border: 1px solid #999; text-align: center; border-radius: 4px;" class="input-number quantity form-control" id="quantity'.$no.'" name="quantity" value="1" data-rule="quantity">
+                
+                <a class="btn btn-link btn-xs" href="javascript:;" data-spin="up" style="cursor: pointer;"><i class="fa fa-plus"></i></a>
+            </div>
+            </td>
+            <td style="width: 50px;">Rp.'.number_format($product['harga'],0,',','.').'</td>
+            <td style="width: 70px;"><button class="btn btn-success btn-xs" onclick="masukcart('.$no.')"> Pilih </button></td>
+        </tr>';
+        ++$no;
+        } 
+    echo' </tbody>
+      </table>';
+      
     }
 
     function tampilformvoid($uniqid)
     {
-        
-        $data['uniqid'] = $uniqid;
-        $this->load->view('kontent_kasir/kontent_form_void', $data);
-        
+        echo '<form method="post" enctype="multipart/form-data" action="'.base_url().'kasir/void_item/'.$uniqid.'">
+                <div class="form-group">
+                Email / Username <input type="text" name="uservoid" value="">
+                Password <input type="password"  name="passvoid" value="">
+                <br>
+                <input type="submit"  name="password" value="">
+                </div>
+                </form>';
     }
 
 /* Aksi */
-    function notifikasi_pesanan()
-    {
-        $jml_sebelumnya=$this->Model_Kasir->get_count_penjualan_hari_ini();
-        $jml_sekarang=$this->Model_Kasir->get_count_penjualan_hari_ini();
-
-        $data = array(   'jml_sebelumnya' =>$jml_sebelumnya ,
-                         'jml_sekarang' =>$jml_sekarang );
-        
-        echo json_encode($data);
-
-    }
-
-
+    
     function masukcart()
     { 
      $index=$this->input->post('index');
