@@ -44,8 +44,7 @@ class Daftar_struk extends CI_Controller
         $dompdf->load_html($html);
 	    $dompdf->set_paper(array(0,0,220,1250));
 	    $dompdf->render();
-	    $dompdf->stream('tes.pdf',array('Attachment' =>1
-        ));
+	    $dompdf->stream('tes.pdf',array('Attachment' =>0));
          
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');

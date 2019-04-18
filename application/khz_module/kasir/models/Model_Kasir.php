@@ -146,6 +146,57 @@ class Model_Kasir extends CI_Model {
 
 	function billmeja($id_meja)
 	{
+		$this->db->select('	id_meja,
+							nama_meja,
+							id_bill,
+							uniqid,
+							id_transaksi,
+							waktu_order,
+							`total_kotor`,
+        					`nilai_pajak`,
+        					`nilai_potongan`,
+        					`total_bersih`,
+							uniqid_transaksi as uniqid_item,
+							harga_jual,
+							quantity,
+							pajak_persen as pajak,
+							nama_product,
+							id_metode,
+							nama_metode,');
+		$this->db->from('laporan_penjualan');
+		
+		$this->db->where('id_meja',$id_meja);
+		$this->db->where('date(eod)=date(0)');
+		$this->db->where('status',0);
+		$this->db->where('void',0);
+		$this->db->order_by('waktu_order', 'desc');
+		return $this->db->get()->result_array();
+		
+	}
+	
+	function detail_meja()
+	{
+		$this->db->select('	id_meja,
+							nama_meja,
+							id_bill,
+							uniqid,
+							id_transaksi,
+							waktu_order,
+        					sum(`total_bersih`) as total_sementara,
+							uniqid_transaksi as uniqid_item');
+		$this->db->from('laporan_penjualan');
+		
+		$this->db->where('date(eod)=date(0)');
+		$this->db->where('status',0);
+		$this->db->where('void',0);
+		$this->db->order_by('waktu_order', 'desc');
+		$this->db->group_by('id_meja');
+		
+		return $this->db->get()->result_array();
+		
+	}
+	/* function billmeja($id_meja)
+	{
 		$this->db->select('a.id_meja,
 							a.nama_meja,
 							concat(prefix_bill,DATE_FORMAT(b.waktu_order,"%y%m"),b.id_metode,right(concat(prefix_number,id_transaksi),4))as id_bill,
@@ -181,7 +232,7 @@ class Model_Kasir extends CI_Model {
 		
 		//this->db->join('Table', 'table.column = table.column', 'left');
 		
-	}
+	} */
 
 	function tampilbill($uniqid,$id_jenis) //print
 	{
