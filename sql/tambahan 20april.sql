@@ -12,6 +12,7 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
 -- Dumping structure for table apporder.detail_transaksi
+DROP TABLE IF EXISTS `detail_transaksi`;
 CREATE TABLE IF NOT EXISTS `detail_transaksi` (
   `uniqid` varchar(25) NOT NULL,
   `id_detail_transaksi` bigint(35) NOT NULL AUTO_INCREMENT,
@@ -40,6 +41,7 @@ CREATE TABLE IF NOT EXISTS `detail_transaksi` (
 
 -- Data exporting was unselected.
 -- Dumping structure for table apporder.h_transaksi
+DROP TABLE IF EXISTS `h_transaksi`;
 CREATE TABLE IF NOT EXISTS `h_transaksi` (
   `uniqid` varchar(25) NOT NULL,
   `id_transaksi` int(15) NOT NULL AUTO_INCREMENT,
@@ -64,6 +66,7 @@ CREATE TABLE IF NOT EXISTS `h_transaksi` (
 
 -- Data exporting was unselected.
 -- Dumping structure for view apporder.laporan_dapur
+DROP VIEW IF EXISTS `laporan_dapur`;
 -- Creating temporary table to overcome VIEW dependency errors
 CREATE TABLE `laporan_dapur` (
 	`id_bill` VARCHAR(17) NULL COLLATE 'latin1_swedish_ci',
@@ -83,6 +86,7 @@ CREATE TABLE `laporan_dapur` (
 ) ENGINE=MyISAM;
 
 -- Dumping structure for view apporder.laporan_penjualan
+DROP VIEW IF EXISTS `laporan_penjualan`;
 -- Creating temporary table to overcome VIEW dependency errors
 CREATE TABLE `laporan_penjualan` (
 	`id_bill` VARCHAR(17) NULL COLLATE 'latin1_swedish_ci',
@@ -123,6 +127,7 @@ CREATE TABLE `laporan_penjualan` (
 ) ENGINE=MyISAM;
 
 -- Dumping structure for view apporder.laporan_dapur
+DROP VIEW IF EXISTS `laporan_dapur`;
 -- Removing temporary table and create final VIEW structure
 DROP TABLE IF EXISTS `laporan_dapur`;
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY INVOKER VIEW `laporan_dapur` AS SELECT 
@@ -147,6 +152,7 @@ from laporan_penjualan
 where eod=0 and void<>1 ;
 
 -- Dumping structure for view apporder.laporan_penjualan
+DROP VIEW IF EXISTS `laporan_penjualan`;
 -- Removing temporary table and create final VIEW structure
 DROP TABLE IF EXISTS `laporan_penjualan`;
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `laporan_penjualan` AS select 
