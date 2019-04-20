@@ -30,7 +30,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/alertify.core.css">
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/alertify.default.css">
+  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/bar.chart.min.css">
 
+  
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -53,7 +55,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <script src="<?php echo base_url();?>assets/js/numeral.js" type="text/javascript"></script>
   <script src="<?php echo base_url();?>assets/js/bootstrap-datepicker.js"></script>
   <script src="<?php echo base_url();?>assets/js/selectize.js" type="text/javascript"></script>
-
+  <script src="<?php echo base_url();?>assets/js/d3.min.js" type="text/javascript"></script>
+  
             <div class="row">
               <?php echo $contents; ?>
             </div>
@@ -78,6 +81,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="<?php echo base_url(); ?>assets/js/app.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/alertify.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/bootstrap-input-spinner.js"></script>
+
+<script src="<?php echo base_url(); ?>assets/js/jquery.bar.chart.min.js"></script>
           
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
