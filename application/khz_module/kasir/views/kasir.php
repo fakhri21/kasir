@@ -11,7 +11,7 @@
     <div class="col">
       <div class="box box-primary">
         <div class="box-header with-border">
-          <h3 class="pull-left">Pesanan : <span id="nama_meja" id="id_meja"> Pilih meja<span></h3> 
+          <h3 class="pull-left">Pesfanan : <span id="nama_meja" id="id_meja"> Pilih meja<span></h3> 
           <button class="btn pull-right btn-success" onclick="refresh_table('mytable')"><i class="fa fa-refresh"></i></button>
         </div>
         <div id="nama_kasir"><span id="id_kasir"></span></div> <!-- Id kasir -->

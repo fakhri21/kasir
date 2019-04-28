@@ -44,7 +44,7 @@ class Model_Kasir extends CI_Model {
 	{
 		$this->db->set('uniqid','UUID_SHORT()',FALSE);
 		$this->db->set('uniqid_transaksi',$uniqid);
-		$this->db->insert($table,$data);
+		return $this->db->insert($table,$data);
 	}
 	
 	function tambahpoint($table,$data,$uniqid)

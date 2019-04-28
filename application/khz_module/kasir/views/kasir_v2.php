@@ -1,35 +1,68 @@
-<div class="container-fluid">
+<div class="container-fluid p-3">
 
-	<!-- tampil produk &amp; meja -->
-	<div class="row">
-		<div class="col">
-			<button class="btn btn-success" data-toggle="modal" data-target="#myModal" onclick="tampilproduct()"><i class="fa fa-plus"></i> Tambah Pesanan</button>
-		</div>
-		<div class="col">
-			<h3 class="pull-left">Pesanan : <span id="nama_meja" id="id_meja"> Pilih meja<span></h3>
-			<div id="nama_kasir"><span id="id_kasir"></span></div> <!-- Id kasir -->
-        	<div id="nama_metode"><span id="id_metode"></span></div> <!-- Id Metode -->
-		</div>
-		<div class="col">
-			<button class="btn btn-primary pull-right" data-toggle="modal" data-target="#modal-meja" onclick="tampilmeja()">Pilih Meja</button>
-		</div>
-	</div>
+  <!-- HEADER -->
+  <div class="row m-3">
+    <div class="card m-3 w-100">
+      <div class="card-body d-flex flex-wrap justify-content-around">
+        <div class="col-lg-4 col-md-4 col-xs-12 p-2 text-center">
+          <button class="btn btn-success" data-toggle="modal" data-target="#myModal" onclick="tampilproduct()"><i class="fa fa-plus"></i> Tambah Pesanan</button>
+        </div>
+        <div class="col-lg-4 col-md-4 col-xs-12 p-2 text-center">
+            <h3 id="nama_meja" id="id_meja"></h3>
+            <div id="nama_kasir"><span id="id_kasir"></span></div> <!-- Id kasir -->
+            <div id="nama_metode"><span id="id_metode"></span></div> <!-- Id Metode -->
+        </div>
+        <div class="col-lg-4 col-md-4 col-xs-12 p-2 text-center">
+            <button class="btn btn-primary ml-2" data-toggle="modal" data-target="#modal-meja" onclick="tampilmeja()">Pilih Meja</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
-	<!-- meja yg berisi &amp; pesanan yg terpilih -->
-	<div class="row">
-		<div class="col" id="detailmeja"></div>
-		<div class="col" id="pesanan"></div>
-	</div>
+  <div class="row m-3">
+      <!-- KIRI -->
+    <div class="col-xs-12 col-md-12 col-lg-6 mb-2">
+      <div class="card W-100">
+        <div class="card-body">
+          <h5 class="card-title d-flex align-items-center">
+            Pesanan
+          </h5>
+          <div class="card-text" id="detailmeja">
 
-	<!-- tombol action -->
-	<div class="row">
-		<div class="col">
-			<button id="btn-detail-pemesanan" class="btn btn-primary" data-toggle="modal" data-target="#modal-detail-pemesanan"><i class="fa fa-file"></i> Detail Pemesanan</button>
-      		<button class="btn btn-primary" onclick="masuk_pesanan()"><i class="fa fa-save"></i> Simpan Order</button>
-		</div>
-	</div>
-	
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- KANAN -->
+      <div class="col-xs-12 col-md-12 col-lg-6">
+        <div class="card W-100">
+          <div class="card-body">
+            <h5 class="card-title d-flex align-items-center">
+              Pesanan
+            </h5>
+            <div class="card-text" id="pesanan">
+  
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+  <div class="row m-3">
+      <div class="card m-3 w-100">
+        <div class="card-body">
+          <div class="col-lg-12 text-center">
+              <button id="btn-detail-pemesanan" class="btn btn-primary" data-toggle="modal" data-target="#modal-detail-pemesanan"><i class="fa fa-file"></i> Detail Pemesanan</button>
+              <button class="btn btn-primary" onclick="masuk_pesanan()"><i class="fa fa-save"></i> Simpan Order</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  
 </div>
+
 
   <!-- Modal Product -->
   <div id="myModal" class="modal fade" role="dialog">
