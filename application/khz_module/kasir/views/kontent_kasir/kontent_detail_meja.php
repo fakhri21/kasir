@@ -9,7 +9,7 @@ foreach ($detail_meja as $items) {
                     <h4 class="modal-title"><?php echo $items['nama_meja'];?></h4>
                 </div>
                 <div class="card-text">
-                    <input type="hidden" id="uniqid" name="uniqid" value="<?php echo $items['uniqid']; ?>" />
+                    <input type="hidden" id="uniqid_detail_meja" name="uniqid" value="<?php echo $items['uniqid']; ?>" />
                     <div>
                         <i class="fa fa-clock-o" aria-hidden="true"></i>
                         <?php echo $items['waktu_order'];?>
