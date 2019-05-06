@@ -21,9 +21,9 @@ public function __construct() {
     $this->data_product=$this->Model_Kasir->allproduct();
     $user = wp_get_current_user();
     
-        // if ( !in_array( 'kasir', (array) $user->roles ) ) {
-        //         redirect(base_url('denied'));
-        //     }
+         if ( !in_array( 'kasir', (array) $user->roles ) ) {
+                 redirect(base_url('denied'));
+             }
     $this->id_kasir=get_current_user_id();
     $this->group='kasir';
     //$this->group=$this->ion_auth->get_users_groups()->row()->name;
