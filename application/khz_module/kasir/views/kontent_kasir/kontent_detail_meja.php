@@ -20,7 +20,6 @@ foreach ($detail_meja as $items) {
                         <button  data-toggle="modal" data-target="#modal-detail-pemesanan" onclick='tampildetailpemesanan(`<?php echo $items["id_meja"] ;?>`,` <?php echo $items["nama_meja"];?>`)' class="btn button-meja is-red">Detail  </button>
 
                         <button onclick='tampildetailpemesanan(`<?php echo $items["id_meja"] ;?>`,` <?php echo $items["nama_meja"];?>`)' class="btn button-meja is-red">Pilih Meja</button>
- 47675673aa20a608ff4e480cd7acb2f3b9673095
                         <div><?php echo number_format($items['total_sementara']);?></div>
                     </div>
                 </div>
