@@ -44,6 +44,9 @@
             <div class="card-text" id="pesanan">
   
             </div>
+            <div>
+              <button class="btn btn-primary" onclick="masuk_pesanan()"><i class="fa fa-save"></i> Simpan Order</button>  
+            </div>
           </div>
         </div>
       </div>
@@ -54,8 +57,7 @@
       <div class="card m-3 w-100">
         <div class="card-body">
           <div class="col-lg-12 text-center">
-              <button id="btn-detail-pemesanan" class="btn btn-primary" data-toggle="modal" data-target="#modal-detail-pemesanan"><i class="fa fa-file"></i> Detail Pemesanan</button>
-              <button class="btn btn-primary" onclick="masuk_pesanan()"><i class="fa fa-save"></i> Simpan Order</button>
+              
           </div>
         </div>
       </div>

@@ -19,7 +19,7 @@ class Model_Kasir extends CI_Model {
         $this->db->set('eod',$data);
         $this->db->update($table);
         
-		$this->db->set('status',0);
+		    $this->db->set('status',0);
         $this->db->update('m_meja');
 
         $this->db->where_in('nama_konfigurasi','buka_kasir');

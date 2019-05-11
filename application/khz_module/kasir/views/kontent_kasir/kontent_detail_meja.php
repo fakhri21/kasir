@@ -16,7 +16,7 @@ foreach ($detail_meja as $items) {
                     </div>
                     <p>No bill : <?php echo $items['id_bill'];?></p>
                     <div class="d-flex align-items-center justify-content-between">
-                        <button onclick='tampildetailpemesanan(`<?php echo $items["id_meja"] ;?>`,` <?php echo $items["nama_meja"];?>`)' class="btn button-meja is-red">Detail  </button>
+                        <button  data-toggle="modal" data-target="#modal-detail-pemesanan" onclick='tampildetailpemesanan(`<?php echo $items["id_meja"] ;?>`,` <?php echo $items["nama_meja"];?>`)' class="btn button-meja is-red">Detail  </button>
                         <div><?php echo number_format($items['total_sementara']);?></div>
                     </div>
                 </div>
