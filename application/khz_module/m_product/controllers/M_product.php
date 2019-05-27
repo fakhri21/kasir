@@ -12,13 +12,13 @@ class M_product extends CI_Controller
         $this->load->library('form_validation');        
 	    $this->load->library('datatables');
         $this->load->helper('nuris_helper');
-        $this->uniqid_user=$this->ion_auth->user()->row()->uniqid;
+        
        $user = wp_get_current_user();
-       if ( !in_array( 'administrator', (array) $user->roles ) ) {
+       /* if ( !in_array( 'administrator', (array) $user->roles ) ) {
                 
                 redirect(base_url('denied'));
             }
-        
+        */ 
 
         
     }
