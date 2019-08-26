@@ -1,4 +1,31 @@
+
 <div class="container-fluid p-3">
+
+  <div id="apps" style="padding-top: 30px;">
+  
+  <b-container fluid>
+    <b-row>
+        <!-- meja -->
+        <b-col md="6">
+            <k_meja></k_meja>
+        </b-col>
+    </b-row>
+
+    <b-row>
+        <!-- pesanan meja -->
+        <b-col md="6">
+            <k_pesanan></k_pesanan>
+        </b-col>
+
+        <!-- tabel pesanan -->
+        <b-col md="6">
+            <k_t_pesanan></k_t_pesanan>
+        </b-col>
+    </b-row>
+  </b-container>
+
+
+</div>
 
   <!-- HEADER -->
   <div class="row m-3">

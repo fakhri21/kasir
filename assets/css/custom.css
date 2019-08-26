@@ -217,6 +217,14 @@
 .menu-circle{ font-size: 12px; background: #5c4f22; margin:0px 3px; color: #efefef; height: 80px; width: 80px; border-radius: 40px; border: 5px solid #2d1d18; text-transform: uppercase; font-weight: bold;}
 .menu-circle:hover{background: #77672d; color: #fff;}
 
+
+
+/* Pagination */
+.pagination>li>a, .pagination>li>span { border-radius: 50% !important;margin: 0 5px; background: #a5d6a7; color: #43a047;}
+.pagination>li:hover a{background: #66bb6a; color: #fff;}
+.pagination>.active>a{background: #4caf50; border-color: #fff;}
+.pagination>.active:hover a{background: #43a047; border-color: #fff;}
+
 /* footer */
 #footer{background: url(../img/pattern.jpg) center center; padding: 40px 0px; border-top: 1px solid #bbb; color: #fff;}
 
@@ -227,7 +235,6 @@
 /* -- login -- */
 #login{ padding: 63px 0px; background: #fff0a3;}
 .panel-default{border: none; border-radius: 0;}
-.card > .card-header{background: #2d1d18; color: #efefef; border-radius: 0;}
 
 /*-- Cart --*/
 #cart{ padding: 30px 0px; background: #fff0a3; }

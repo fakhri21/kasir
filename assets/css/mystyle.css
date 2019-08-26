@@ -1,0 +1,40 @@
+
+body{
+	font-family: sans-serif;
+	background: #d5f0f3;
+}
+
+.box-judul{
+	max-width: 600px;
+	padding: 20px;
+	margin:10px auto;
+	background: rgba(45,65,129.9);
+	border-radius: 10px;
+}
+
+.judul{
+	font-family: 'Chewy', cursive;
+	color: #fff;
+	text-align: center;
+}
+
+.meja{ margin-bottom: 5px; }
+
+.wrapper{
+	background: rgba(255,255,255,.9);
+	max-width: 1200px;
+	margin:30px auto;
+	padding: 20px;
+}
+
+
+/* --- Product --- */
+.product{
+	margin: 10px;
+padding: 0px 0px;
+border: 1px solid #ccc;
+}
+
+.input-porsi{
+	width: 50%;
+}

@@ -14,12 +14,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="<?php echo base_url(); ?>/assets/css/selectize.default.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>/assets/css/font-awesome.css">
+  <link rel="stylesheet" href="<?php echo base_url(); ?>/assets/lib/fontawesome/css/all.min.css">
 
   <!-- DataTables -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/plugins/datatables/dataTables.bootstrap.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>/assets/css/AdminLTE.min.css">
   <link rel="stylesheet" href="<?php echo base_url(); ?>/assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/bootstrap-vue.css">
   <link rel="stylesheet" href="<?php echo base_url(); ?>/assets/css/custom.css">
   <link href="<?php echo base_url();?>assets/css/bootstrap-datepicker3.css" rel="stylesheet">
   <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
@@ -64,8 +66,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-	<div class="container">
-  <a class="navbar-brand" href="#"><img src="<?php echo base_url();?>assets/img/menu-digital.png" height="60px"> Menu Digital</a>
+  <div class="container">
+  <a class="navbar-brand" href="#"><img src="<?php echo base_url();?>assets/img/mudig-165x50.png" height="50px;" class="d-inline-block align-top" alt="Logo"></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -79,8 +81,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <a class="nav-link" href="<?php echo site_url('logout') ?>">Logout</a>
       </li>
     </ul>
-	
-	
+  
+  
     <ul>
   </div>
   </div>
@@ -129,6 +131,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="<?php echo base_url(); ?>assets/js/bootstrap-input-spinner.js"></script>
 
 <script src="<?php echo base_url(); ?>assets/js/jquery.bar.chart.min.js"></script>
+
+<script src="<?php echo base_url();?>assets/js/vue.min.js"></script>
+          <script src="<?php echo base_url();?>assets/js/bootstrap-vue.js"></script>
           
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
